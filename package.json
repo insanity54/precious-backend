@@ -1,0 +1,20 @@
+{
+  "name": "precious-backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "express": "^4.17.1",
+    "globby": "^11.0.0",
+    "sql-template-strings": "^2.2.2",
+    "sqlite": "^3.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "author": "",
+  "license": "Unlicense"
+}
