@@ -9,11 +9,24 @@ const dbPromise = sqlite.open('./database.sqlite', { Promise });
 
 dbUtils.initDb(dbPromise) // import precious-data into sqlite
 
-app.get('/number/:id', async (req, res, next) => {
+app.get('/api/v1/number/:number', async (req, res, next) => {
   try {
     const db = await dbPromise;
     const [cards] = await Promise.all([
-      db.get('SELECT * FROM cards WHERE number = ?', req.params.id)
+      db.get('SELECT * FROM cards WHERE number = ?', req.params.number)
+    ]);
+    console.log(cards.length)
+    res.send(cards);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/v1/setAbbr/:setAbbr', async (req, res, next) => {
+  try {
+    const db = await dbPromise;
+    const cards = await Promise.all([
+      db.get('SELECT * FROM cards WHERE setAbbr = ?', req.params.setAbbr)
     ]);
     console.log(cards.length)
     res.send(cards);
